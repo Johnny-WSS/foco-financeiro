@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Meu Perfil - Foco Financeiro{% endblock %}
+
+{% block container_class %}container-slim{% endblock %}
+
+{% block content %}
+    <h1 style="font-weight: 600;">Meu Perfil</h1>
+
+    <div class="card form-perfil">
+        <h3>Editar Perfil</h3>
+        <form action="{{ url_for('perfil') }}" method="POST">
+            <label for="nome">Nome:</label>
+            <input type="text" name="nome" value="{{ usuario.nome }}" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" name="email" value="{{ usuario.email }}" disabled>
+            <small>O email não pode ser alterado.</small>
+            
+            <br><br>
+            <button type="submit">Salvar Alterações</button>
+        </form>
+    </div>
+
+    <div class="card danger-zone" style="border: 1px solid #dc3545;">
+        <h3 style="color: #dc3545; margin-top: 0;">Zona de Perigo</h3>
+        <p>A exclusão da sua conta é permanente e não pode ser revertida. Todos os seus dados financeiros serão apagados.</p>
+        <form action="{{ url_for('excluir_conta') }}" method="POST" onsubmit="return confirm('VOCÊ TEM CERTEZA ABSOLUTA?\nTodos os seus dados serão permanentemente apagados.');">
+            <label for="senha">Digite sua senha para confirmar:</label>
+            <input type="password" name="senha" placeholder="Sua senha" required>
+            <button type="submit" style="background-color: #dc3545;">Excluir Minha Conta Permanentemente</button>
+        </form>
+    </div>
+{% endblock %}

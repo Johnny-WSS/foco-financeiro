@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}Gerenciar Categorias - Foco Financeiro{% endblock %}
+
+{% block container_class %}container-slim{% endblock %}
+
+{% block content %}
+    <h1 style="font-weight: 600;">Gerenciar Categorias</h1>
+
+    <div class="card form-categoria">
+        <h3>Nova Categoria</h3>
+        <form action="{{ url_for('adicionar_categoria') }}" method="POST">
+            <input type="text" name="nome" placeholder="Nome da Categoria (ex: Moradia)" required>
+            <button type="submit" style="background-color: #28a745;">Adicionar Categoria</button>
+        </form>
+    </div>
+
+    <div class="card lista-categorias">
+        <h3>Suas Categorias</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cat in categorias %}
+                <tr>
+                    <td>{{ cat.nome }}</td>
+                    <td class="actions">
+                        <a href="{{ url_for('editar_categoria', id=cat.id) }}" class="edit">Editar</a>
+                        <a href="{{ url_for('excluir_categoria', id=cat.id) }}" class="delete" onclick="return confirm('Tem certeza que deseja excluir?');">Excluir</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
