@@ -14,7 +14,7 @@ Mais do que uma calculadora, este projeto foi o meu "campo de provas" para aplic
 * **Linguagem:** Java (JDK 17 )
 * **Interface:** Console (Terminal)
 * **Banco de Dados/Persistência:** MySQL / SQLite Arquivos de Texto
-* **IDE:** Eclipse
+* **IDE:** VS Code
 
 ## ⚙️ Destaques Técnicos
 
